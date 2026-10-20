@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "repo-hygiene-cli"
+version = "0.1.0"
+description = "A fast developer CLI to audit git repositories for security hygiene, sensitive files in git commit history, missing .gitignore patterns, and git configuration safety"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "slopggobblercobbler81", email = "336610228+slopggobblercobbler81@users.noreply.github.com"}
+]
+keywords = [
+    "git",
+    "security",
+    "hygiene",
+    "audit",
+    "gitignore",
+    "secrets",
+    "credentials",
+    "scanner",
+    "cli"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Version Control :: Git",
+    "Topic :: Security",
+]
+dependencies = [
+    "click>=8.0",
+    "rich>=12.0.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[project.scripts]
+repo-hygiene = "repo_hygiene.cli:cli"
+git-hygiene = "repo_hygiene.cli:cli"
+
+[project.urls]
+Homepage = "https://github.com/slopggobblercobbler81/repo-hygiene-cli"
+Repository = "https://github.com/slopggobblercobbler81/repo-hygiene-cli"
+Issues = "https://github.com/slopggobblercobbler81/repo-hygiene-cli/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["repo_hygiene*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
